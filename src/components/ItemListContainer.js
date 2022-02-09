@@ -1,16 +1,11 @@
-const ItemListContainer = () => {
-    return(
+const ItemListContainer = (props) => {
+    return (
         <div className="text-start mt-3 container">
             <h2>Your Current items:</h2>
             <ul>
-                <li>First Item</li>
-                <li>Second Item</li>
-                <li>third Item</li>
-                <li>fourth Item</li>
-                <li>Fifth Item</li>
-                <li>Sixth Item</li>
-                <li>Seventh Item</li>
-                <li>Eighth Item</li>
+                <li>{props.item1}</li>
+                <li>{props.item2}</li>
+                <li>{props.item3}</li>
             </ul>
         </div>)
 };
