@@ -1,6 +1,8 @@
 import './App.css';
 import NavBar from './components/NavBar';
 import ItemListContainer from './components/Items/ItemListContainer';
+import ItemDetailContainer from './components/Items/ItemDetailContainer';
+import Pruebas from './components/Pruebas';
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
       />
       <NavBar />
       <div className="container pt-3">
+        <ItemDetailContainer name="Buzo Negro"/>
         <ItemListContainer item1="Pantalon" item2="Remera" item3="Zapatillas" />
       </div>
     </div>
