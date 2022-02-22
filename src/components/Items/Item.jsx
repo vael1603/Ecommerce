@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Item = (props) => {
     return <>
         <div className="card bg-light" style={{width: '18rem'}}>
@@ -8,7 +10,7 @@ const Item = (props) => {
             <div className="card-body">
                 <h4 className="card-title">${props.product.price}</h4>
                 {/*<p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>*/}
-                <a href="#" className="btn btn-primary">Ver más</a>
+                <Link to={`/item/${props.product.id}`} className="btn btn-primary">Ver más</Link>
             </div>
         </div>
     </>
