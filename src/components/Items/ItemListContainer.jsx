@@ -1,29 +1,30 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { ItemContext } from "../context/ItemProvider";
 import ItemList from "./ItemList";
 
 const ItemListContainer = () => {
 
     const [itemsProduct, setItemsProduct] = useState([]);
 
-    var products = [
-        {id: 1, title: 'Buzo', price: '9799', pictureUrl:'https://http2.mlstatic.com/D_NQ_NP_794307-MLA47189161734_082021-W.jpg'},
-        {id: 2, title: 'Remera', price: '1299', pictureUrl: 'https://fabric.com.ar/wp-content/uploads/2017/11/REMERALISA.AZUL_-600x600.jpg'},
-        {id: 3, title: 'Pantalon', price: '7499', pictureUrl: 'https://pngimg.com/uploads/jeans/jeans_PNG5773.png'},
-        {id: 4, title: 'Zapatos', price: '5589', pictureUrl: 'https://http2.mlstatic.com/D_NQ_NP_929716-MLA44136202542_112020-W.jpg'},
-      ];
+    let {saveItemList} = useContext(ItemContext);
 
-    const getProducts = new Promise((resolve, reject) => {
+    useEffect(() => {
+        const getProducts = new Promise((resolve, reject) => {
+            fetch("https://mocki.io/v1/20c4d929-28de-4b2e-a7b4-901407622933")
+            .then((res) => {
+                resolve(res.json());
+            });
+        });
 
-        setTimeout(() => {
-            resolve(products);
-        }, 2000);
-    });
+        getProducts.then((result) => {
+            setItemsProduct(result);
+            saveItemList(result);
+        }).catch(err => {
+            console.log(err);
+        })
+    
+    }, []);
 
-    getProducts.then((result) => {
-        setItemsProduct(result);
-    }).catch(err => {
-        console.log(err);
-    })
 
     return (
         <div className="row text-start mt-3 container">

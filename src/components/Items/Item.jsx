@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Item = (props) => {
     return <>
-        <div className="card bg-light" style={{width: '18rem'}}>
+        <div className="card bg-light m-2" style={{width: '18rem'}}>
             <div className="card-header bg-light mb-3">
             <h5 className="card-title">{props.product.title}</h5>
             </div>
