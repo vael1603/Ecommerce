@@ -1,9 +1,6 @@
 import './App.css';
 import NavBar from './components/NavBar';
-import ItemListContainer from './components/Items/ItemListContainer';
-import ItemDetailContainer from './components/Items/ItemDetailContainer';
-import CartProvider from './components/context/CartProvider';
-import Rutas from './rou';
+import Rutas from './routes';
 import ItemProvider from './components/context/ItemProvider';
 
 function App() {

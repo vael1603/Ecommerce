@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router";
 import { ItemContext } from "../context/ItemProvider";
 import ItemList from "./ItemList";
 
@@ -7,6 +8,16 @@ const ItemListContainer = () => {
     const [itemsProduct, setItemsProduct] = useState([]);
 
     let {saveItemList} = useContext(ItemContext);
+
+    const params = useParams();
+
+    const filterCategory = (list) => {
+        if( params.category != undefined) {
+            setItemsProduct(
+                list.filter((item) => item.category == params.category)
+            );
+        }
+    }
 
     useEffect(() => {
         const getProducts = new Promise((resolve, reject) => {
@@ -19,6 +30,7 @@ const ItemListContainer = () => {
         getProducts.then((result) => {
             setItemsProduct(result);
             saveItemList(result);
+            filterCategory(result);
         }).catch(err => {
             console.log(err);
         })
