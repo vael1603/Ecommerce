@@ -4,15 +4,36 @@ export const CartContext = createContext();
 
 const CartProvider = ({children}) => {
     
-    const [cartIems, setCartItems] = useState(0);
+    const [cartItems, setCartItems] = useState([]);
+    const [quantity, setQuantity] = useState(0);
 
-    const agregar = () =>{
-        setCartItems(cartIems + 1);
-        alert('prueba');
+    const onCart = (obj, numItems) =>{
+        setCartItems(...cartItems, obj);
+        
+        setQuantity(quantity + numItems);
+    }
+
+    const clear = () => {
+        setQuantity(0);
+        setCartItems([]);
+    }
+
+    const removeItem = (itemId) => {
+        if( isInCart(itemId)) {
+            cartItems.filter((item) => item.id !== itemId);
+        }
+    }
+
+    const isInCart = (id) => {
+        if( cartItems.filter(item => item.id === id).length > 0) {
+            return true;
+        }   else {
+            return false;
+        }
     }
 
     return (
-        <CartContext.Provider value={cartIems}>
+        <CartContext.Provider value={{cartItems, onCart, quantity}}>
             {children}
         </CartContext.Provider>
     )

@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../context/CartProvider";
 import ItemCount from "./ItemCount"
 
 const ItemDetail = (props) => {
 
-
     const [quantity, setQuantity] = useState(0);
     const [addCart, setAddCart] = useState(false);
+    const {onCart} = useContext(CartContext);
 
     const changeQuantity = (num) => {
         setQuantity(num);
@@ -14,6 +15,7 @@ const ItemDetail = (props) => {
 
     const changeAddCart = (bool) => {
         setAddCart(bool);
+        onCart(props, quantity);
     }
 
     return <>

@@ -2,6 +2,7 @@ import './App.css';
 import NavBar from './components/NavBar';
 import Rutas from './routes';
 import ItemProvider from './components/context/ItemProvider';
+import CartProvider from './components/context/CartProvider';
 
 function App() {
   return (
@@ -12,12 +13,14 @@ function App() {
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
         crossOrigin="anonymous"
       />
-      <NavBar />
-      <div className="container pt-3">
-        <ItemProvider>
-          <Rutas />
-        </ItemProvider>
-      </div>
+      <CartProvider>
+        <NavBar />
+        <div className="container pt-3">
+          <ItemProvider>
+            <Rutas />
+          </ItemProvider>
+        </div>
+      </CartProvider>
     </div>
   );
 }
