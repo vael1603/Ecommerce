@@ -1,7 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { ItemContext } from "../context/ItemProvider";
+import {collection, getDocs} from "firebase/firestore";
 import ItemList from "./ItemList";
+import db from "../services/firebase";
 
 const ItemListContainer = () => {
 
@@ -19,22 +21,25 @@ const ItemListContainer = () => {
         }
     }
 
+    const getData = async () => {
+        const data = collection(db, "Items");
+        const col = await getDocs(data);
+        const result = col.docs.map((doc) => doc = {id:doc.id,...doc.data()});
+        setItemsProduct(result);
+        setItemsProduct(result);
+        saveItemList(result);
+        filterCategory(result);
+    }
+/*
     useEffect(() => {
-        const getProducts = new Promise((resolve, reject) => {
-            fetch("https://mocki.io/v1/20c4d929-28de-4b2e-a7b4-901407622933")
-            .then((res) => {
-                resolve(res.json());
-            });
-        });
+        get
+        const itemCollection = db.collection.("items").get();
 
-        getProducts.then((result) => {
-            setItemsProduct(result);
-            saveItemList(result);
-            filterCategory(result);
-        }).catch(err => {
-            console.log(err);
-        })
-    
+        console.log(itemCollection);
+    }, []);*/
+
+    useEffect(() => {
+        getData();
     }, []);
 
 

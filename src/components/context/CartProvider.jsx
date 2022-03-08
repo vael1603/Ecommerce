@@ -5,12 +5,15 @@ export const CartContext = createContext();
 const CartProvider = ({children}) => {
     
     const [cartItems, setCartItems] = useState([]);
-    const [quantity, setQuantity] = useState(0);
+    const [quantity, setQuantity] = useState();
 
     const onCart = (obj, numItems) =>{
         setCartItems(...cartItems, obj);
-        
-        setQuantity(quantity + numItems);
+        if(quantity != undefined ){
+            setQuantity(quantity + numItems);
+        } else {
+            setQuantity(numItems);
+        }
     }
 
     const clear = () => {
