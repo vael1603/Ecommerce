@@ -15,7 +15,7 @@ const ItemDetail = (props) => {
 
     const changeAddCart = (bool) => {
         setAddCart(bool);
-        onCart(props, quantity);
+        onCart(props.details, quantity);
     }
 
     return <>
