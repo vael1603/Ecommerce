@@ -1,27 +1,29 @@
-import { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useContext } from "react";
 import { CartContext } from "../context/CartProvider";
 import CartItem from "./CartItem";
 
 const Cart = () => {
 
-    const {cartItems} = useContext(CartContext);
-
-    const nothingInCart = () => {
-        if (cartItems.length == 0){
-            return true
-        } else {
-            return false
-        }
-    }
+    const { cartItems, total } = useContext(CartContext);
 
     return <>
-    <h4 className="text-start mt-3">Tu Carrito:</h4>
-    <div className="row ">
-        { cartItems.map(item => <CartItem product={item}/> )}
-        { nothingInCart() && <div><h5 className="card bg-light w-50 mx-auto p-4 mt-3">Tu carrtito esta vacio</h5>
-        <Link className="btn btn-dark w-25 mx-auto" to="/"> volver al inicio</Link></div>}
-    </div>
+        <div className="col-md-4 mx-auto order-md-2 mb-4">
+            <h4 className="d-flex justify-content-between align-items-center mb-3">
+                <span className="text-muted">Tu carrito</span>
+                <span className="badge badge-secondary badge-pill">3</span>
+            </h4>
+            <ul className="list-group mb-3 sticky-top">
+                {
+                    cartItems.map(item =>
+                        <CartItem key={item.id} product={item} />
+                    )
+                }
+                <li className="list-group-item d-flex justify-content-between  bg-light">
+                    <span>Total: </span>
+                    <strong>$ {total}</strong>
+                </li>
+            </ul>
+        </div>
     </>
 };
 

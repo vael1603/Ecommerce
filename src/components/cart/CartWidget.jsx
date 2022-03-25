@@ -10,7 +10,7 @@ const CartWidget = () => {
     return (
         <>
         {quantity >= 1 && <div className="d-flex">
-            <Link to={"/cart"}>
+            <Link to={"checkout"}>
                 <FaShoppingCart size={25} style={{ fill: 'grey' }} />
             </Link>
                 <div className="mx-1 px-1 mt-1 text-light">

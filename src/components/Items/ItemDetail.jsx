@@ -30,7 +30,7 @@ const ItemDetail = (props) => {
                     { addCart != true && <ItemCount onSelect={changeQuantity} onFinish={changeAddCart} stock={props.details.stock}/>}
                     { addCart == true &&  
                         <div>
-                            <Link to="/cart" className="btn btn-light m-2">Terminar Compra</Link>
+                            <Link to="/checkout" className="btn btn-light m-2">Terminar Compra</Link>
                             <p>usted añadio {quantity} items al carrito</p>
                         </div>
                         }

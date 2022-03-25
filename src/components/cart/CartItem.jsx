@@ -1,27 +1,22 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartProvider";
 
 const CartItem = (props) => {
 
-    const {removeItem} = useContext(CartContext);
+    const { removeItem } = useContext(CartContext);
 
-    console.log(props.product.id)
     return <>
-        <div className="card bg-light mx-auto w-75">
-            <div className="d-flex bg-light">
-                <h4 className="my-auto">{props.product.title}</h4>
-                <h4 className="my-auto m-auto">${props.product.price}</h4>
-                <img className="rounded-circle m-2" width={90} src={props.product.pictureUrl} alt="Card image cap" />
-                <p className="my-auto">x {props.product.quantity} unidades</p>
+        <li className="list-group-item d-flex justify-content-between lh-condensed">
+            <img className="rounded-circle" width={50} src={props.product.pictureUrl} alt="Card image cap" />
+            <div>
+                <h6 className="my-0">{props.product.title}</h6>
+                <small className="text-muted">unidades: {props.product.quantity}</small>
             </div>
-            <div className="justify-content-end d-grid gap-2 d-md-flex">
-                <button className="btn btn-danger w-25 mb-3" onClick={() => removeItem(props.product.id)}>
-                    eliminar
-            </button>
-
+            <span className="text-muted d-block">${props.product.price}</span>
+            <div>
+            <button className="btn-close ml-auto"  onClick={() => removeItem(props.product.id)} aria-label="borrar"></button>
             </div>
-        </div>
+        </li>
     </>
 };
 

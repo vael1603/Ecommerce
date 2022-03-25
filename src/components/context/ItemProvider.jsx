@@ -1,30 +1,21 @@
-import { createContext, useEffect, useState } from "react";
-import db from "../services/firebase";
-import {collection, getDocs} from "firebase/firestore";
+import { createContext, useEffect } from "react";
+import useFireStore from "../hooks/useFireStore";
 
 export const ItemContext = createContext();
 
 const ItemProvider = ({children}) => {
     
-    const [items, setItems] = useState();
+    const {items, getData, load} = useFireStore();
 
     const saveItemList = (list) => {
-        setItems(list);
-    }
-
-    const getData = async () => {
-        const data = collection(db, "Items");
-        const col = await getDocs(data);
-        const result = col.docs.map((doc) => doc = {id:doc.id,...doc.data()});
-        setItems(result);
     }
 
     useEffect(() => {
-        getData();
+        getData()
     }, []);
 
     return (
-        <ItemContext.Provider value={{items, saveItemList}}>
+        <ItemContext.Provider value={{items, saveItemList, load}}>
             {children}
         </ItemContext.Provider>
     )
