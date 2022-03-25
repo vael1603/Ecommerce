@@ -1,3 +1,18 @@
+### Este Proyecto esta Desarrollado con React
+    antes de levantarlo correr el comando "npm i", para instalar todas sus dependencias
+    luego, ejecutar "npm start"
+
+## La Base de datos la obtiene de Firebase
+    esta conexion es posible verla en el archivo firebase.js
+    en hooks/useFireStore.jsx disponemos de varias funciones que nos seran de utilidad para la expansión del proyecto
+
+## La aplicación cuenta con dos context principales
+    ItemProvider.jsx para guardar la lista de productos del Ecommerce
+    CartProvider.jsx para almacenar temporalmente los productos seleccionados
+
+## Su diseño cuenta con Bootstrap 5
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
