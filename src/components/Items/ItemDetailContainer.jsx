@@ -13,7 +13,7 @@ const ItemDetailContainer = () => {
 
     useEffect(() => {
         const getItem = new Promise((resolve, reject) => {
-            resolve( items.find( product => { return product.id == params.id}));
+            resolve( items.find( product => { return product.id === params.id}));
         });
 
         getItem.then((result) => {
