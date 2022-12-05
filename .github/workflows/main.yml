@@ -1,6 +1,6 @@
 # activa nuestro flujo de trabajo cuando alguien haga un push
 on: push
-name: Build Angular
+name: Build React
 
 # Estamos definiendo un trabajo Build Angularque se ejecuta en ubuntu-latest. Cada trabajo se ejecuta en una nueva instancia de un entorno virtual. Un trabajo puede contener uno o más steps. También definimos la NodeJSversión que queremos ejecutar
 jobs:
