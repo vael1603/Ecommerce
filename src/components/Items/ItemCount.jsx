@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 const ItemCount = ({stock, onSelect, onFinish}) => {
     const [quantity, setQuantity] = useState(0);

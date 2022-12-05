@@ -12,7 +12,7 @@ const ItemProvider = ({children}) => {
 
     useEffect(() => {
         getData()
-    }, []);
+    }, [getData]);
 
     return (
         <ItemContext.Provider value={{items, saveItemList, load}}>

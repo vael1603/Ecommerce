@@ -22,7 +22,8 @@ const ItemDetailContainer = () => {
             console.log(err);
         })
 
-    }, []);
+    }, [items, params]
+);
 
 
     return <>

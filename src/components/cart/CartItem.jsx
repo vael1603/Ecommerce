@@ -7,7 +7,7 @@ const CartItem = (props) => {
 
     return <>
         <li className="list-group-item d-flex justify-content-between lh-condensed">
-            <img className="rounded-circle" width={50} src={props.product.pictureUrl} alt="Card image cap" />
+            <img className="rounded-circle" width={50} src={props.product.pictureUrl} alt="Card cap" />
             <div>
                 <h6 className="my-0">{props.product.title}</h6>
                 <small className="text-muted">unidades: {props.product.quantity}</small>

@@ -53,7 +53,7 @@ const CartProvider = ({ children }) => {
 
     const getTotal = (items) => {
         let totalPrice = 0;
-        items.map(item => {
+        items = items.map(item => {
             totalPrice = multiplyPrice(item) + totalPrice
         });
         setTotal(totalPrice);
@@ -65,7 +65,7 @@ const CartProvider = ({ children }) => {
 
     useEffect(() => {
         getTotal(cartItems);
-    }, [cartItems]);
+    }, [cartItems, getTotal]);
 
     return (
         <CartContext.Provider value={{ cartItems, onCart, quantity, removeItem, total, clear}}>
