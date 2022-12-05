@@ -64,6 +64,13 @@ const CartProvider = ({ children }) => {
     }
 
     useEffect(() => {
+        const getTotal = (items) => {
+            let totalPrice = 0;
+            items.forEach(item => {
+                totalPrice = multiplyPrice(item) + totalPrice
+            });
+            setTotal(totalPrice);
+        }
         getTotal(cartItems);
     }, [cartItems]);
 
